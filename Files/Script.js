@@ -32,12 +32,12 @@
     zone.addEventListener('drop', e => {
         e.preventDefault();
         zone.classList.remove('drag-over');
-        const file = e.dataTransfer.Files[0];
+        const file = e.dataTransfer.files[0];
         if (file && file.type.startsWith('image/')) loadFile(file);
     });
 
     fileInput.addEventListener('change', () => {
-        if (fileInput.Files[0]) loadFile(fileInput.Files[0]);
+        if (fileInput.files[0]) loadFile(fileInput.files[0]);
     });
 
     function loadFile(file) {
@@ -60,7 +60,15 @@
                 
                 updateView();
             };
+            img.onerror = () => {
+                alert('Failed to load image. Please select a valid photo.');
+                zone.classList.remove('has-image');
+                $('preview-img').src = '';
+            };
             img.src = state.imgSrc;
+        };
+        reader.onerror = () => {
+            alert('Error reading file. Please try again.');
         };
         reader.readAsDataURL(file);
     }

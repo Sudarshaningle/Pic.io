@@ -591,6 +591,9 @@
 
         $('genBtn').disabled = false;
         updateStatus('done');
+        
+        // Show donation modal after generation
+        setTimeout(showDonationModal, 500);
     }
 
     // ── Mobile Tabs ───────────────────────────────────────────────────
@@ -610,6 +613,22 @@
             tabPreviewBtn.classList.remove('active');
         });
     }
+
+    // ── Donation Modal ────────────────────────────────────────────────
+    const donationModal = $('donationModal');
+    const donateHeaderBtn = $('donateHeaderBtn');
+    const skipDonationBtn = $('skipDonationBtn');
+
+    function showDonationModal() {
+        if (donationModal) donationModal.classList.remove('hidden');
+    }
+
+    function hideDonationModal() {
+        if (donationModal) donationModal.classList.add('hidden');
+    }
+
+    if (donateHeaderBtn) donateHeaderBtn.addEventListener('click', showDonationModal);
+    if (skipDonationBtn) skipDonationBtn.addEventListener('click', hideDonationModal);
 
     // Init
     $('gapVal').textContent = state.gap + ' mm';

@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pass-Port-Photo-Creator is a web-based application designed to streamline the creation and formatting of passport photographs.">
   <title>pic.io — Premium Photo Studio</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="icon" type="image/x-icon" href="Assets/Icon.ico">
@@ -22,7 +23,7 @@
   <div class="app-layout">
     <!-- Sidebar Controls -->
     <aside class="sidebar">
-      <header class="sidebar-header">
+      <header class="sidebar-header" style="display: flex; justify-content: space-between; align-items: center;">
         <div class="logo">
           <img src="Assets/logo-icon.svg" alt="pic.io" class="logo-icon" />
           <div class="logo-text">
@@ -30,6 +31,9 @@
             <p class="tagline">Premium Photo Studio</p>
           </div>
         </div>
+        <button id="donateHeaderBtn" class="donate-btn-small" title="Support Us">
+           <i class="ri-heart-3-line"></i>
+        </button>
       </header>
 
       <div class="sidebar-content">
@@ -303,6 +307,34 @@
       <i class="ri-settings-4-line"></i>
       <span>Settings</span>
     </button>
+  </div>
+
+  <!-- Donation Modal -->
+  <div id="donationModal" class="modal-overlay hidden">
+    <div class="modal-container">
+      <div class="modal-header">
+        <i class="ri-heart-3-fill modal-icon"></i>
+        <h2>Support Our Work</h2>
+        <p>If you found this tool helpful, consider buying us a coffee! Your support keeps this tool free.</p>
+      </div>
+      <div class="donation-methods">
+        <div class="donation-card">
+           <h3>UPI (India)</h3>
+           <div class="qr-box">
+             <img src="Assets/upi-qr.jpeg" alt="UPI QR Code" id="upiQrImg">
+           </div>
+           <p>Scan to pay</p>
+        </div>
+        <div class="donation-card">
+           <h3>PayPal (Global)</h3>
+           <i class="ri-paypal-fill paypal-icon"></i>
+           <p class="paypal-email">suduingle2007@gmail.com</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="action-btn secondary" id="skipDonationBtn">Skip</button>
+      </div>
+    </div>
   </div>
 
   <script src="Files/Script.js"></script>
